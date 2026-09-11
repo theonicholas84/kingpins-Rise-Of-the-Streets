@@ -1,120 +1,54 @@
-let money = 5000;
-let members = 5;
-let territories = 1;
-let day = 1;
+const feed = document.getElementById("feed");
 
-function updateUI(){
+const events = [
 
-    document.getElementById("money").textContent = money;
-    document.getElementById("members").textContent = members;
-    document.getElementById("territories").textContent = territories;
+"⚔ Rival gang spotted near Harbor",
 
-}
+"💰 Illegal deal earned $2000",
 
-function addLog(text){
+"🚔 Police increased patrols",
 
-    let log = document.getElementById("log");
+"🔥 Downtown influence increased",
 
-    log.innerHTML =
-        "[Day " + day + "] " + text +
-        "<br>" +
-        log.innerHTML;
+"👤 New recruit joined your crew",
 
-}
+"📦 Smuggling route established"
 
-function recruit(){
+];
 
-    if(money >= 500){
+function addFeed(text){
 
-        money -= 500;
-        members++;
+const div =
+document.createElement("div");
 
-        addLog("New member recruited.");
+div.className =
+"feedItem";
 
-        updateUI();
+div.innerText =
+text;
 
-    }else{
-
-        addLog("Not enough money.");
-
-    }
+feed.prepend(div);
 
 }
 
-function expand(){
+document
+.getElementById("nextDay")
+.addEventListener(
+"click",
+()=>{
 
-    let power = members * Math.random();
+const random =
+events[
+Math.floor(
+Math.random()*events.length
+)
+];
 
-    if(power > 5){
-
-        territories++;
-
-        money += 1000;
-
-        addLog("Territory captured.");
-
-    }else{
-
-        members--;
-
-        addLog("Gang war failed. Lost one member.");
-
-    }
-
-    updateUI();
+addFeed(random);
 
 }
+);
 
-function nextDay(){
-
-    day++;
-
-    let income = territories * 300;
-
-    money += income;
-
-    randomEvent();
-
-    addLog("Earned $" + income);
-
-    updateUI();
-
-}
-
-function randomEvent(){
-
-    let roll = Math.floor(Math.random() * 4);
-
-    if(roll === 0){
-
-        money -= 300;
-
-        addLog("Police raid cost $300.");
-
-    }
-
-    if(roll === 1){
-
-        money += 700;
-
-        addLog("Illegal deal successful.");
-
-    }
-
-    if(roll === 2){
-
-        members++;
-
-        addLog("A local thug joined.");
-
-    }
-
-    if(roll === 3){
-
-        addLog("Quiet day.");
-
-    }
-
-}
-
-updateUI();!
+addFeed(
+"👑 Welcome Boss."
+);
