@@ -3,108 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kingpins</title>
+<title>Kingpins — City of Crowns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="background"></div>
+<div class="noise"></div>
 
-<header>
+<div class="app">
 
-<div class="logo">
-KINGPINS
+  <aside class="nav">
+    <div class="brand">
+      <div class="crown">♛</div>
+      <div class="brand-text">
+        <strong>Kingpins</strong>
+        <span>City of Crowns</span>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <button class="nav-btn active" data-view="territory">
+        <span class="nav-icon">🗺️</span> Territory
+      </button>
+      <button class="nav-btn" data-view="squad">
+        <span class="nav-icon">👥</span> Crew
+      </button>
+      <button class="nav-btn" data-view="standings">
+        <span class="nav-icon">📊</span> Standings
+      </button>
+      <button class="nav-btn" data-view="feed">
+        <span class="nav-icon">📰</span> Street Report
+      </button>
+    </nav>
+
+    <div class="nav-footer">
+      <div class="day-counter">
+        <span>Day</span>
+        <strong id="dayCount">1</strong>
+      </div>
+      <button id="nextDay" class="next-day-btn">
+        <span>Next Day</span>
+        <span class="next-day-sub">Advance the week</span>
+      </button>
+      <button id="resetGame" class="reset-btn">Reset save</button>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <div class="stat">
+        <span class="stat-icon">💰</span>
+        <div class="stat-body">
+          <h3 id="money">5000</h3>
+          <label>Cash on hand</label>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">👥</span>
+        <div class="stat-body">
+          <h3 id="members">4</h3>
+          <label>Crew</label>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🔥</span>
+        <div class="stat-body">
+          <h3 id="heat">15</h3>
+          <label>Police heat</label>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🎖️</span>
+        <div class="stat-body">
+          <h3 id="reputation">50</h3>
+          <label>Reputation</label>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker-wrap">
+      <span class="ticker-tag">Live</span>
+      <div class="ticker-track" id="ticker">Welcome to the city, Boss.</div>
+    </div>
+
+    <main>
+
+      <section id="view-territory" class="view active">
+        <div class="view-heading">
+          <h1>City Map</h1>
+          <p>Five districts, three rival outfits, one throne. Contest a district to expand your reach.</p>
+        </div>
+        <div class="city-map" id="cityMap"></div>
+      </section>
+
+      <section id="view-squad" class="view">
+        <div class="view-heading">
+          <h1>Your Crew</h1>
+          <p>Attribute ratings drive every job. Keep loyalty up, or someone else will.</p>
+        </div>
+        <div class="squad-grid" id="squadGrid"></div>
+
+        <div class="view-heading sub">
+          <h2>Free Agents</h2>
+          <p>Available for hire, if the price is right.</p>
+        </div>
+        <div class="squad-grid" id="recruitGrid"></div>
+      </section>
+
+      <section id="view-standings" class="view">
+        <div class="view-heading">
+          <h1>Turf Standings</h1>
+          <p>Ranked by districts held and total muscle on the street.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="standings-table" id="standingsTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Outfit</th>
+                <th>Districts</th>
+                <th>Strength</th>
+                <th>Daily take</th>
+              </tr>
+            </thead>
+            <tbody id="standingsBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="view-feed" class="view">
+        <div class="view-heading">
+          <h1>Street Report</h1>
+          <p>Everything that's happened on your watch.</p>
+        </div>
+        <div id="feed" class="feed-full"></div>
+      </section>
+
+    </main>
+  </div>
 </div>
 
-<div class="topbar">
-
-<div class="stat">
-<span>💰</span>
-<h3 id="money">5000</h3>
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal"></div>
 </div>
-
-<div class="stat">
-<span>👥</span>
-<h3 id="members">12</h3>
-</div>
-
-<div class="stat">
-<span>🔥</span>
-<h3 id="heat">15</h3>
-</div>
-
-</div>
-
-</header>
-
-<main>
-
-<section class="city">
-
-<div class="district owned">
-<h2>Downtown</h2>
-<p>Income: $500/day</p>
-</div>
-
-<div class="district">
-<h2>Harbor</h2>
-<p>Rival Control</p>
-</div>
-
-<div class="district">
-<h2>Industrial</h2>
-<p>Neutral</p>
-</div>
-
-<div class="district">
-<h2>Chinatown</h2>
-<p>Neutral</p>
-</div>
-
-</section>
-
-<section class="sidebar">
-
-<div class="card">
-
-<h2>Your Crew</h2>
-
-<div class="member">
-<div class="avatar"></div>
-<div>
-<h3>Miguel</h3>
-<p>Captain • Loyalty 82</p>
-</div>
-</div>
-
-<div class="member">
-<div class="avatar"></div>
-<div>
-<h3>Carlos</h3>
-<p>Soldier • Loyalty 67</p>
-</div>
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Street Feed</h2>
-
-<div id="feed"></div>
-
-</div>
-
-</section>
-
-</main>
-
-<button id="nextDay">
-NEXT DAY
-</button>
 
 <script src="script.js"></script>
-
 </body>
 </html>
