@@ -1,34 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Kingpins: Rise of the Streets</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingpins</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>Kingpins: Rise of the Streets</h1>
+<div class="background"></div>
 
-<div class="panel">
+<header>
 
-    <h2>Boss</h2>
+<div class="logo">
+KINGPINS
+</div>
 
-    <p>Money: $<span id="money">5000</span></p>
-    <p>Members: <span id="members">5</span></p>
-    <p>Territories: <span id="territories">1</span></p>
+<div class="topbar">
 
-    <button onclick="recruit()">Recruit Member</button>
-    <button onclick="expand()">Take Territory</button>
-    <button onclick="nextDay()">Next Day</button>
+<div class="stat">
+<span>💰</span>
+<h3 id="money">5000</h3>
+</div>
+
+<div class="stat">
+<span>👥</span>
+<h3 id="members">12</h3>
+</div>
+
+<div class="stat">
+<span>🔥</span>
+<h3 id="heat">15</h3>
+</div>
 
 </div>
 
-<div class="panel">
+</header>
 
-    <h2>Event Log</h2>
+<main>
 
-    <div id="log"></div>
+<section class="city">
+
+<div class="district owned">
+<h2>Downtown</h2>
+<p>Income: $500/day</p>
+</div>
+
+<div class="district">
+<h2>Harbor</h2>
+<p>Rival Control</p>
+</div>
+
+<div class="district">
+<h2>Industrial</h2>
+<p>Neutral</p>
+</div>
+
+<div class="district">
+<h2>Chinatown</h2>
+<p>Neutral</p>
+</div>
+
+</section>
+
+<section class="sidebar">
+
+<div class="card">
+
+<h2>Your Crew</h2>
+
+<div class="member">
+<div class="avatar"></div>
+<div>
+<h3>Miguel</h3>
+<p>Captain • Loyalty 82</p>
+</div>
+</div>
+
+<div class="member">
+<div class="avatar"></div>
+<div>
+<h3>Carlos</h3>
+<p>Soldier • Loyalty 67</p>
+</div>
+</div>
 
 </div>
+
+<div class="card">
+
+<h2>Street Feed</h2>
+
+<div id="feed"></div>
+
+</div>
+
+</section>
+
+</main>
+
+<button id="nextDay">
+NEXT DAY
+</button>
 
 <script src="script.js"></script>
 
