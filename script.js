@@ -1,4 +1,4 @@
-/* ============================================================
+    /* ============================================================
    KINGPINS — City of Crowns
    Football-Manager style crime empire sim
    ============================================================ */
@@ -139,11 +139,9 @@ function renderMap(){
     map.querySelectorAll(".meter-fill").forEach(m => { m.style.width = m.dataset.w + "%"; });
   });
 
-  map.querySelectorAll(".zone-action").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openTurfModal(btn.dataset.zone);
-    });
+  // whole card is clickable, not just the small button inside it
+  map.querySelectorAll(".zone").forEach(card => {
+    card.addEventListener("click", () => openTurfModal(card.dataset.id));
   });
 }
 
@@ -531,6 +529,3 @@ function nextDay(){
       cost: 900 + Math.round(Math.random()*1400),
     });
     addFeed(`🕶️ A new face is looking for work: ${name}, ${role}.`, "good");
-  }
-
-  saveState
