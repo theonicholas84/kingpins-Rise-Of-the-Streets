@@ -1,0 +1,26 @@
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+    padding:20px;
+}
+
+.panel{
+    background:#222;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+}
+
+button{
+    padding:10px;
+    margin:5px;
+    cursor:pointer;
+}
+
+#log{
+    height:300px;
+    overflow-y:auto;
+    background:black;
+    padding:10px;
+}
